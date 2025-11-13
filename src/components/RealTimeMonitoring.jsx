@@ -64,7 +64,18 @@ const RealTimeMonitoring = () => {
 
   return (
     <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
-      <h2 className="text-2xl font-bold mb-4 text-cyan-400">Monitoreo en Tiempo Real</h2>
+      <h2 className="text-2xl font-bold mb-4 text-cyan-400">Monitoreo en Tiempo Real - Integración Continua</h2>
+
+      <div className="mb-4 p-4 bg-gray-700 rounded-lg">
+        <p className="text-sm text-gray-300 mb-2">
+          <strong>Contexto de Monitoreo:</strong> Esta simulación muestra el monitoreo continuo de recursos de un servidor en producción.
+          Las funciones sinusoidales y cosenoidales modelan las fluctuaciones naturales del uso de memoria y CPU durante la ejecución de procesos, simulando un servidor web con carga variable.
+        </p>
+        <p className="text-sm text-gray-300">
+          La integral acumulada representa el trabajo total realizado por el sistema desde el inicio del monitoreo, útil para análisis de rendimiento y detección de anomalías.
+          Cada punto representa el consumo integrado de CPU y memoria en intervalos de tiempo discretos.
+        </p>
+      </div>
 
       <div className="flex justify-center space-x-4 mb-6">
         <button
@@ -93,11 +104,12 @@ const RealTimeMonitoring = () => {
       </div>
 
       <div className="mb-6">
+        <h3 className="text-lg font-semibold mb-2">Uso de Recursos en Tiempo Real</h3>
         <ResponsiveContainer width="100%" height={300}>
           <LineChart data={data}>
             <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-            <XAxis dataKey="time" stroke="#9CA3AF" />
-            <YAxis stroke="#9CA3AF" />
+            <XAxis dataKey="time" stroke="#9CA3AF" label={{ value: 'Tiempo (segundos)', position: 'insideBottom', offset: -5 }} />
+            <YAxis stroke="#9CA3AF" label={{ value: 'Uso de Recursos', angle: -90, position: 'insideLeft' }} />
             <Tooltip
               contentStyle={{ backgroundColor: '#1F2937', border: 'none' }}
               labelStyle={{ color: '#F9FAFB' }}
@@ -109,12 +121,12 @@ const RealTimeMonitoring = () => {
       </div>
 
       <div className="mb-6">
-        <h3 className="text-lg font-semibold mb-2">Trabajo Acumulado</h3>
+        <h3 className="text-lg font-semibold mb-2">Trabajo Total del Sistema (Integral Acumulativa)</h3>
         <ResponsiveContainer width="100%" height={200}>
           <AreaChart data={data}>
             <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-            <XAxis dataKey="time" stroke="#9CA3AF" />
-            <YAxis stroke="#9CA3AF" />
+            <XAxis dataKey="time" stroke="#9CA3AF" label={{ value: 'Tiempo (segundos)', position: 'insideBottom', offset: -5 }} />
+            <YAxis stroke="#9CA3AF" label={{ value: 'Trabajo Total', angle: -90, position: 'insideLeft' }} />
             <Tooltip
               contentStyle={{ backgroundColor: '#1F2937', border: 'none' }}
               labelStyle={{ color: '#F9FAFB' }}
@@ -125,22 +137,29 @@ const RealTimeMonitoring = () => {
               stroke="#8B5CF6"
               fill="#8B5CF6"
               fillOpacity={0.3}
-              name="Trabajo Acumulado"
+              name="Trabajo Total"
             />
           </AreaChart>
         </ResponsiveContainer>
       </div>
 
       <div className="bg-gray-700 p-4 rounded">
-        <h3 className="text-lg font-semibold mb-2">Estadísticas en Tiempo Real</h3>
-        <p>Tiempo transcurrido: {time} segundos</p>
-        <p>Trabajo acumulado: {totalWork.toFixed(2)} unidades</p>
-        {data.length > 0 && (
-          <>
-            <p>Memoria actual: {data[data.length - 1].memory.toFixed(2)} MB</p>
-            <p>CPU actual: {data[data.length - 1].cpu.toFixed(2)} %</p>
-          </>
-        )}
+        <h3 className="text-lg font-semibold mb-2">Métricas del Sistema en Tiempo Real</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <p className="text-sm text-gray-300">Tiempo de monitoreo: {time} segundos</p>
+            <p className="text-sm text-gray-300">Trabajo total integrado: {totalWork.toFixed(2)} unidades</p>
+          </div>
+          <div>
+            {data.length > 0 && (
+              <>
+                <p className="text-sm text-gray-300">Memoria actual: {data[data.length - 1].memory.toFixed(2)} MB</p>
+                <p className="text-sm text-gray-300">CPU actual: {data[data.length - 1].cpu.toFixed(2)} %</p>
+                <p className="text-cyan-400 font-semibold">El servidor ha procesado {totalWork.toFixed(2)} unidades de trabajo en {time} segundos</p>
+              </>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );

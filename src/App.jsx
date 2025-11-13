@@ -12,8 +12,28 @@ function App() {
     <div className="min-h-screen bg-gray-900 text-white p-4">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-4xl font-bold text-center mb-8 text-cyan-400">
-          Simulador de Consumo de Recursos - Cálculo Integral
+          Simulador de Recursos Computacionales - Cálculo Integral
         </h1>
+
+        <div className="mb-6 p-4 bg-gray-700 rounded-lg max-w-4xl mx-auto">
+          <p className="text-center text-gray-300 mb-2">
+            <strong>Objetivo Educativo:</strong> Este simulador demuestra cómo los conceptos del cálculo integral se aplican al monitoreo y análisis de recursos computacionales.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 text-sm text-gray-300">
+            <div className="text-center">
+              <strong className="text-cyan-400">Nivel Básico</strong><br/>
+              Suma de Riemann para aproximar uso acumulado de CPU
+            </div>
+            <div className="text-center">
+              <strong className="text-cyan-400">Nivel Intermedio</strong><br/>
+              Área entre funciones para comparar Memoria vs CPU
+            </div>
+            <div className="text-center">
+              <strong className="text-cyan-400">Nivel Avanzado</strong><br/>
+              Integración en tiempo real para monitoreo continuo
+            </div>
+          </div>
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2">

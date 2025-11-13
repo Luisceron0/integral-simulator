@@ -71,7 +71,18 @@ const RiemannSum = () => {
 
   return (
     <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
-      <h2 className="text-2xl font-bold mb-4 text-cyan-400">Suma de Riemann</h2>
+      <h2 className="text-2xl font-bold mb-4 text-cyan-400">Suma de Riemann - Consumo de CPU</h2>
+
+      <div className="mb-4 p-4 bg-gray-700 rounded-lg">
+        <p className="text-sm text-gray-300 mb-2">
+          <strong>Contexto de CPU:</strong> Esta simulación representa el consumo de CPU de un servidor durante un período de tiempo.
+          La función f(t) = e^t + 1 modela cómo el uso de CPU aumenta exponencialmente con el tiempo debido a la carga de trabajo creciente.
+        </p>
+        <p className="text-sm text-gray-300">
+          El intervalo [a,b] representa el período de medición: 'a' es el tiempo inicial (segundos) y 'b' es el tiempo final.
+          Ajusta los parámetros para ver cómo diferentes intervalos de tiempo y métodos de aproximación afectan el cálculo del trabajo total realizado por el CPU.
+        </p>
+      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
         <div>
@@ -129,41 +140,53 @@ const RiemannSum = () => {
       </div>
 
       <div className="mb-6">
+        <h3 className="text-lg font-semibold mb-2">Función de Consumo de CPU: f(t) = e^t + 1</h3>
         <ResponsiveContainer width="100%" height={300}>
           <LineChart data={chartData}>
             <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-            <XAxis dataKey="t" stroke="#9CA3AF" />
-            <YAxis stroke="#9CA3AF" />
+            <XAxis dataKey="t" stroke="#9CA3AF" label={{ value: 'Tiempo (segundos)', position: 'insideBottom', offset: -5 }} />
+            <YAxis stroke="#9CA3AF" label={{ value: 'Uso de CPU (%)', angle: -90, position: 'insideLeft' }} />
             <Tooltip
               contentStyle={{ backgroundColor: '#1F2937', border: 'none' }}
               labelStyle={{ color: '#F9FAFB' }}
+              formatter={(value) => [`${value}%`, 'CPU']}
             />
-            <Line type="monotone" dataKey="f" stroke="#06B6D4" strokeWidth={2} />
+            <Line type="monotone" dataKey="f" stroke="#06B6D4" strokeWidth={2} name="Uso de CPU" />
           </LineChart>
         </ResponsiveContainer>
       </div>
 
       <div className="mb-6">
-        <h3 className="text-lg font-semibold mb-2">Aproximación con Rectángulos</h3>
+        <h3 className="text-lg font-semibold mb-2">Aproximación del Trabajo del CPU por Intervalos</h3>
         <ResponsiveContainer width="100%" height={200}>
           <BarChart data={rectangleData}>
             <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-            <XAxis dataKey="x" stroke="#9CA3AF" />
-            <YAxis stroke="#9CA3AF" />
+            <XAxis dataKey="x" stroke="#9CA3AF" label={{ value: 'Tiempo (segundos)', position: 'insideBottom', offset: -5 }} />
+            <YAxis stroke="#9CA3AF" label={{ value: 'Trabajo CPU', angle: -90, position: 'insideLeft' }} />
             <Tooltip
               contentStyle={{ backgroundColor: '#1F2937', border: 'none' }}
               labelStyle={{ color: '#F9FAFB' }}
+              formatter={(value) => [`${value} unidades`, 'Trabajo']}
             />
-            <Bar dataKey="height" fill="#8B5CF6" />
+            <Bar dataKey="height" fill="#8B5CF6" name="Trabajo por intervalo" />
           </BarChart>
         </ResponsiveContainer>
       </div>
 
       <div className="bg-gray-700 p-4 rounded">
-        <h3 className="text-lg font-semibold mb-2">Cálculos</h3>
-        <p>Δt = (b - a) / n = ({b} - {a}) / {n} = {calculateRiemannSum.deltaT.toFixed(4)}</p>
-        <p>Suma de Riemann ≈ {calculateRiemannSum.sum.toFixed(4)}</p>
-        <p className="text-cyan-400">El CPU realizó aproximadamente {calculateRiemannSum.sum.toFixed(2)} unidades de trabajo</p>
+        <h3 className="text-lg font-semibold mb-2">Análisis del Consumo de CPU</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <p className="text-sm text-gray-300">Intervalo de tiempo: [{a}, {b}] segundos</p>
+            <p className="text-sm text-gray-300">Subintervalos: {n}</p>
+            <p className="text-sm text-gray-300">Δt = {calculateRiemannSum.deltaT.toFixed(4)} segundos</p>
+          </div>
+          <div>
+            <p className="text-sm text-gray-300">Método: {method === 'midpoint' ? 'Puntos medios' : method === 'left' ? 'Izquierda' : method === 'right' ? 'Derecha' : 'Trapecios'}</p>
+            <p className="text-sm text-gray-300">Trabajo total aproximado: {calculateRiemannSum.sum.toFixed(4)} unidades</p>
+            <p className="text-cyan-400 font-semibold">El CPU procesó {calculateRiemannSum.sum.toFixed(2)} unidades de trabajo en {b - a} segundos</p>
+          </div>
+        </div>
       </div>
     </div>
   );

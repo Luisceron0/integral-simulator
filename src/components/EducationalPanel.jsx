@@ -4,21 +4,21 @@ const EducationalPanel = ({ activeTab }) => {
   const content = {
     riemann: {
       title: "¿Qué es una Suma de Riemann?",
-      explanation: "La suma de Riemann es una aproximación del área bajo una curva mediante rectángulos. En el contexto de recursos computacionales, representa el trabajo total realizado por el CPU en un intervalo de tiempo.",
-      formula: "S = Σ f(tᵢ) Δt",
-      applications: "Se utiliza para calcular consumo de energía, tiempo de procesamiento y recursos utilizados en intervalos discretos."
+      explanation: "La suma de Riemann divide el intervalo [a,b] en n subintervalos y aproxima el área bajo la curva f(x) usando rectángulos. En el contexto de CPU, 'a' es el tiempo inicial y 'b' es el tiempo final del intervalo de medición. Cada rectángulo representa el trabajo realizado en un pequeño intervalo de tiempo Δt.",
+      formula: "S = Σ f(tᵢ) Δt donde tᵢ ∈ [a,b]",
+      applications: "Se utiliza para calcular consumo de energía del CPU, tiempo de procesamiento y recursos utilizados en intervalos discretos. Los diferentes métodos (izquierdo, derecho, medio, trapezoidal) ofrecen diferentes niveles de precisión."
     },
     area: {
       title: "¿Por qué calcular área entre funciones?",
-      explanation: "El área entre dos funciones representa la diferencia acumulada entre dos magnitudes a lo largo del tiempo. En sistemas computacionales, puede mostrar el desbalance entre demanda y capacidad de recursos.",
-      formula: "Área = ∫[f(t) - g(t)] dt",
-      applications: "Útil para analizar bottlenecks, optimizar asignación de recursos y predecir necesidades futuras de hardware."
+      explanation: "El área entre dos funciones M(t) y C(t) representa la diferencia acumulada entre memoria utilizada y capacidad del CPU a lo largo del tiempo. Un área positiva indica que la memoria excede la capacidad del CPU, sugiriendo posibles cuellos de botella.",
+      formula: "Área = ∫[M(t) - C(t)] dt entre intersecciones",
+      applications: "Útil para analizar desbalances entre demanda de memoria y capacidad de procesamiento, optimizar asignación de recursos y predecir necesidades futuras de hardware en sistemas distribuidos."
     },
     realtime: {
       title: "Monitoreo Continuo de Recursos",
-      explanation: "La integración en tiempo real permite observar cómo se acumulan los recursos utilizados. La integral acumulada muestra el trabajo total realizado hasta el momento actual.",
-      formula: "Trabajo(t) = ∫₀ᵗ recursos(τ) dτ",
-      applications: "Monitoreo de sistemas en producción, análisis de rendimiento y detección de anomalías en el consumo de recursos."
+      explanation: "La integración en tiempo real acumula el trabajo total realizado por el sistema. Muestra cómo el consumo de recursos se integra a lo largo del tiempo, permitiendo observar tendencias y detectar anomalías en el rendimiento del sistema.",
+      formula: "Trabajo(t) = ∫₀ᵗ [CPU(τ) + Memoria(τ)] dτ",
+      applications: "Monitoreo de sistemas en producción, análisis de rendimiento en tiempo real, detección de anomalías en el consumo de recursos y optimización de la eficiencia energética de servidores."
     }
   };
 

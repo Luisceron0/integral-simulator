@@ -10,6 +10,8 @@
 - [x] Implement Section 3: Real-time simulation with updating chart and controls
 - [x] Add educational information panel with explanations and formulas
 - [x] Ensure responsive grid layout and visual appeal
+- [x] Add contextual explanations linking math to CPU resource monitoring
+- [x] Enhance UI with better labels, tooltips, and educational content
 - [x] Test the application with npm run dev
 - [x] Verify mathematical accuracy and visual rendering
 - [x] Check responsiveness on different screen sizes
