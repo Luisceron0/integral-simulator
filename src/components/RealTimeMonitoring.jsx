@@ -63,15 +63,15 @@ const RealTimeMonitoring = () => {
   const totalWork = data.length > 0 ? data[data.length - 1].integral : 0;
 
   return (
-    <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
-      <h2 className="text-2xl font-bold mb-4 text-cyan-400">Monitoreo en Tiempo Real - Integración Continua</h2>
+    <div className="bg-gray-800 p-4 md:p-6 rounded-lg shadow-lg">
+      <h2 className="text-xl md:text-2xl font-bold mb-4 text-cyan-400">Monitoreo en Tiempo Real - Integración Continua</h2>
 
-      <div className="mb-4 p-4 bg-gray-700 rounded-lg">
-        <p className="text-sm text-gray-300 mb-2">
+      <div className="mb-4 p-3 md:p-4 bg-gray-700 rounded-lg">
+        <p className="text-xs md:text-sm text-gray-300 mb-2 break-words">
           <strong>Contexto de Monitoreo:</strong> Esta simulación muestra el monitoreo continuo de recursos de un servidor en producción.
           Las funciones sinusoidales y cosenoidales modelan las fluctuaciones naturales del uso de memoria y CPU durante la ejecución de procesos, simulando un servidor web con carga variable.
         </p>
-        <p className="text-sm text-gray-300">
+        <p className="text-xs md:text-sm text-gray-300 break-words">
           La integral acumulada representa el trabajo total realizado por el sistema desde el inicio del monitoreo, útil para análisis de rendimiento y detección de anomalías.
           Cada punto representa el consumo integrado de CPU y memoria en intervalos de tiempo discretos.
         </p>
@@ -104,7 +104,7 @@ const RealTimeMonitoring = () => {
       </div>
 
       <div className="mb-6">
-        <h3 className="text-lg font-semibold mb-2">Uso de Recursos en Tiempo Real</h3>
+        <h3 className="text-base md:text-lg font-semibold mb-2">Uso de Recursos en Tiempo Real</h3>
         <ResponsiveContainer width="100%" height={300}>
           <LineChart data={data}>
             <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
@@ -121,7 +121,7 @@ const RealTimeMonitoring = () => {
       </div>
 
       <div className="mb-6">
-        <h3 className="text-lg font-semibold mb-2">Trabajo Total del Sistema (Integral Acumulativa)</h3>
+        <h3 className="text-base md:text-lg font-semibold mb-2">Trabajo Total del Sistema (Integral Acumulativa)</h3>
         <ResponsiveContainer width="100%" height={200}>
           <AreaChart data={data}>
             <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
@@ -143,19 +143,19 @@ const RealTimeMonitoring = () => {
         </ResponsiveContainer>
       </div>
 
-      <div className="bg-gray-700 p-4 rounded">
-        <h3 className="text-lg font-semibold mb-2">Métricas del Sistema en Tiempo Real</h3>
+      <div className="bg-gray-700 p-3 md:p-4 rounded">
+        <h3 className="text-base md:text-lg font-semibold mb-2">Métricas del Sistema en Tiempo Real</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <p className="text-sm text-gray-300">Tiempo de monitoreo: {time} segundos</p>
-            <p className="text-sm text-gray-300">Trabajo total integrado: {totalWork.toFixed(2)} unidades</p>
+            <p className="text-xs md:text-sm text-gray-300 break-words">Tiempo de monitoreo: {time} segundos</p>
+            <p className="text-xs md:text-sm text-gray-300 break-words">Trabajo total integrado: {totalWork.toFixed(2)} unidades</p>
           </div>
           <div>
             {data.length > 0 && (
               <>
-                <p className="text-sm text-gray-300">Memoria actual: {data[data.length - 1].memory.toFixed(2)} MB</p>
-                <p className="text-sm text-gray-300">CPU actual: {data[data.length - 1].cpu.toFixed(2)} %</p>
-                <p className="text-cyan-400 font-semibold">El servidor ha procesado {totalWork.toFixed(2)} unidades de trabajo en {time} segundos</p>
+                <p className="text-xs md:text-sm text-gray-300 break-words">Memoria actual: {data[data.length - 1].memory.toFixed(2)} MB</p>
+                <p className="text-xs md:text-sm text-gray-300 break-words">CPU actual: {data[data.length - 1].cpu.toFixed(2)} %</p>
+                <p className="text-xs md:text-sm md:text-base text-cyan-400 font-semibold break-words">El servidor ha procesado {totalWork.toFixed(2)} unidades de trabajo en {time} segundos</p>
               </>
             )}
           </div>

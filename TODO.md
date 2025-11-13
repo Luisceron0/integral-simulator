@@ -1,17 +1,7 @@
-# TODO List for Integral Calculus Simulator
+# TODO: Fix Mobile Text Responsiveness Across Entire Application
 
-- [x] Create 'integral-simulator' directory on Desktop
-- [x] Initialize React project with Vite
-- [x] Install dependencies: recharts, mathjs, lucide-react, tailwindcss, postcss, autoprefixer
-- [x] Configure Tailwind CSS (tailwind.config.js, postcss.config.js, src/index.css)
-- [x] Develop App.jsx with tabbed interface for three sections
-- [x] Implement Section 1: Riemann Sum with sliders, chart, and calculations
-- [x] Implement Section 2: Area between functions with adjustable parameters and chart
-- [x] Implement Section 3: Real-time simulation with updating chart and controls
-- [x] Add educational information panel with explanations and formulas
-- [x] Ensure responsive grid layout and visual appeal
-- [x] Add contextual explanations linking math to CPU resource monitoring
-- [x] Enhance UI with better labels, tooltips, and educational content
-- [x] Test the application with npm run dev
-- [x] Verify mathematical accuracy and visual rendering
-- [x] Check responsiveness on different screen sizes
+- [x] RealTimeMonitoring.jsx - Adjust header, subheader, paragraph, and metrics text sizes and wrapping
+- [x] App.jsx - Adjust main title, description text, and grid layout for mobile
+- [x] RiemannSum.jsx - Adjust headers, descriptions, labels, and analysis text for mobile
+- [x] AreaBetweenFunctions.jsx - Adjust headers, descriptions, labels, and analysis text for mobile
+- [x] EducationalPanel.jsx - Adjust headers, content text, and formula display for mobile

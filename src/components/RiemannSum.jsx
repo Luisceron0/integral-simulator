@@ -70,15 +70,15 @@ const RiemannSum = () => {
   }, [calculateRiemannSum.rectangles]);
 
   return (
-    <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
-      <h2 className="text-2xl font-bold mb-4 text-cyan-400">Suma de Riemann - Consumo de CPU</h2>
+    <div className="bg-gray-800 p-4 md:p-6 rounded-lg shadow-lg">
+      <h2 className="text-xl md:text-2xl font-bold mb-4 text-cyan-400 break-words">Suma de Riemann - Consumo de CPU</h2>
 
-      <div className="mb-4 p-4 bg-gray-700 rounded-lg">
-        <p className="text-sm text-gray-300 mb-2">
+      <div className="mb-4 p-3 md:p-4 bg-gray-700 rounded-lg">
+        <p className="text-xs md:text-sm text-gray-300 mb-2 break-words">
           <strong>Contexto de CPU:</strong> Esta simulación representa el consumo de CPU de un servidor durante un período de tiempo.
           La función f(t) = e^t + 1 modela cómo el uso de CPU aumenta exponencialmente con el tiempo debido a la carga de trabajo creciente.
         </p>
-        <p className="text-sm text-gray-300">
+        <p className="text-xs md:text-sm text-gray-300 break-words">
           El intervalo [a,b] representa el período de medición: 'a' es el tiempo inicial (segundos) y 'b' es el tiempo final.
           Ajusta los parámetros para ver cómo diferentes intervalos de tiempo y métodos de aproximación afectan el cálculo del trabajo total realizado por el CPU.
         </p>
@@ -86,7 +86,7 @@ const RiemannSum = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
         <div>
-          <label className="block text-sm font-medium mb-2">Intervalo [a, b]</label>
+          <label className="block text-xs md:text-sm font-medium mb-2 break-words">Intervalo [a, b]</label>
           <div className="flex space-x-2">
             <input
               type="range"
@@ -96,7 +96,7 @@ const RiemannSum = () => {
               onChange={(e) => setA(Number(e.target.value))}
               className="w-full"
             />
-            <span className="text-sm">{a}</span>
+            <span className="text-xs md:text-sm">{a}</span>
           </div>
           <div className="flex space-x-2 mt-2">
             <input
@@ -107,12 +107,12 @@ const RiemannSum = () => {
               onChange={(e) => setB(Number(e.target.value))}
               className="w-full"
             />
-            <span className="text-sm">{b}</span>
+            <span className="text-xs md:text-sm">{b}</span>
           </div>
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-2">Número de subintervalos (n)</label>
+          <label className="block text-xs md:text-sm font-medium mb-2 break-words">Número de subintervalos (n)</label>
           <input
             type="range"
             min="4"
@@ -121,15 +121,15 @@ const RiemannSum = () => {
             onChange={(e) => setN(Number(e.target.value))}
             className="w-full"
           />
-          <span className="text-sm">{n}</span>
+          <span className="text-xs md:text-sm">{n}</span>
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-2">Método</label>
+          <label className="block text-xs md:text-sm font-medium mb-2">Método</label>
           <select
             value={method}
             onChange={(e) => setMethod(e.target.value)}
-            className="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2"
+            className="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2 text-xs md:text-sm"
           >
             <option value="midpoint">Puntos medios</option>
             <option value="left">Izquierda</option>
@@ -140,7 +140,7 @@ const RiemannSum = () => {
       </div>
 
       <div className="mb-6">
-        <h3 className="text-lg font-semibold mb-2">Función de Consumo de CPU: f(t) = e^t + 1</h3>
+        <h3 className="text-base md:text-lg font-semibold mb-2 break-words">Función de Consumo de CPU: f(t) = e^t + 1</h3>
         <ResponsiveContainer width="100%" height={300}>
           <LineChart data={chartData}>
             <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
@@ -157,7 +157,7 @@ const RiemannSum = () => {
       </div>
 
       <div className="mb-6">
-        <h3 className="text-lg font-semibold mb-2">Aproximación del Trabajo del CPU por Intervalos</h3>
+        <h3 className="text-base md:text-lg font-semibold mb-2 break-words">Aproximación del Trabajo del CPU por Intervalos</h3>
         <ResponsiveContainer width="100%" height={200}>
           <BarChart data={rectangleData}>
             <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
@@ -173,18 +173,18 @@ const RiemannSum = () => {
         </ResponsiveContainer>
       </div>
 
-      <div className="bg-gray-700 p-4 rounded">
-        <h3 className="text-lg font-semibold mb-2">Análisis del Consumo de CPU</h3>
+      <div className="bg-gray-700 p-3 md:p-4 rounded">
+        <h3 className="text-base md:text-lg font-semibold mb-2 break-words">Análisis del Consumo de CPU</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <p className="text-sm text-gray-300">Intervalo de tiempo: [{a}, {b}] segundos</p>
-            <p className="text-sm text-gray-300">Subintervalos: {n}</p>
-            <p className="text-sm text-gray-300">Δt = {calculateRiemannSum.deltaT.toFixed(4)} segundos</p>
+            <p className="text-xs md:text-sm text-gray-300 break-words">Intervalo de tiempo: [{a}, {b}] segundos</p>
+            <p className="text-xs md:text-sm text-gray-300 break-words">Subintervalos: {n}</p>
+            <p className="text-xs md:text-sm text-gray-300 break-words">Δt = {calculateRiemannSum.deltaT.toFixed(4)} segundos</p>
           </div>
           <div>
-            <p className="text-sm text-gray-300">Método: {method === 'midpoint' ? 'Puntos medios' : method === 'left' ? 'Izquierda' : method === 'right' ? 'Derecha' : 'Trapecios'}</p>
-            <p className="text-sm text-gray-300">Trabajo total aproximado: {calculateRiemannSum.sum.toFixed(4)} unidades</p>
-            <p className="text-cyan-400 font-semibold">El CPU procesó {calculateRiemannSum.sum.toFixed(2)} unidades de trabajo en {b - a} segundos</p>
+            <p className="text-xs md:text-sm text-gray-300 break-words">Método: {method === 'midpoint' ? 'Puntos medios' : method === 'left' ? 'Izquierda' : method === 'right' ? 'Derecha' : 'Trapecios'}</p>
+            <p className="text-xs md:text-sm text-gray-300 break-words">Trabajo total aproximado: {calculateRiemannSum.sum.toFixed(4)} unidades</p>
+            <p className="text-xs md:text-sm md:text-base text-cyan-400 font-semibold break-words">El CPU procesó {calculateRiemannSum.sum.toFixed(2)} unidades de trabajo en {b - a} segundos</p>
           </div>
         </div>
       </div>

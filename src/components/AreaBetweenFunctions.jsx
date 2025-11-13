@@ -90,15 +90,15 @@ const AreaBetweenFunctions = () => {
   }, [calculateIntersectionsAndArea, memoryFunc, cpuFunc]);
 
   return (
-    <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
-      <h2 className="text-2xl font-bold mb-4 text-cyan-400">Área entre Funciones - Comparación Memoria vs CPU</h2>
+    <div className="bg-gray-800 p-4 md:p-6 rounded-lg shadow-lg">
+      <h2 className="text-xl md:text-2xl font-bold mb-4 text-cyan-400 break-words">Área entre Funciones - Comparación Memoria vs CPU</h2>
 
-      <div className="mb-4 p-4 bg-gray-700 rounded-lg">
-        <p className="text-sm text-gray-300 mb-2">
+      <div className="mb-4 p-3 md:p-4 bg-gray-700 rounded-lg">
+        <p className="text-xs md:text-sm text-gray-300 mb-2 break-words">
           <strong>Contexto de Recursos:</strong> Esta simulación compara el consumo de memoria y CPU de un sistema durante la ejecución de un proceso.
           La función de memoria M(t) = (t + m)² representa el crecimiento cuadrático del uso de RAM, mientras que C(t) = -t + c muestra la capacidad decreciente del CPU.
         </p>
-        <p className="text-sm text-gray-300">
+        <p className="text-xs md:text-sm text-gray-300 break-words">
           El área entre las curvas representa el desbalance de recursos, útil para identificar cuellos de botella y optimizar la asignación de hardware.
           Un área positiva indica que la memoria excede la capacidad del CPU, sugiriendo la necesidad de más núcleos de procesamiento.
         </p>
@@ -106,7 +106,7 @@ const AreaBetweenFunctions = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
         <div>
-          <label className="block text-sm font-medium mb-2">Parámetro Memoria (M(t) = (t + x)²)</label>
+          <label className="block text-xs md:text-sm font-medium mb-2 break-words">Parámetro Memoria (M(t) = (t + x)²)</label>
           <input
             type="range"
             min="1"
@@ -115,11 +115,11 @@ const AreaBetweenFunctions = () => {
             onChange={(e) => setMParam(Number(e.target.value))}
             className="w-full"
           />
-          <span className="text-sm">{mParam}</span>
+          <span className="text-xs md:text-sm">{mParam}</span>
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-2">Parámetro CPU (C(t) = -t + y)</label>
+          <label className="block text-xs md:text-sm font-medium mb-2 break-words">Parámetro CPU (C(t) = -t + y)</label>
           <input
             type="range"
             min="1"
@@ -128,12 +128,12 @@ const AreaBetweenFunctions = () => {
             onChange={(e) => setCParam(Number(e.target.value))}
             className="w-full"
           />
-          <span className="text-sm">{cParam}</span>
+          <span className="text-xs md:text-sm">{cParam}</span>
         </div>
       </div>
 
       <div className="mb-6">
-        <h3 className="text-lg font-semibold mb-2">Consumo de Recursos: Memoria vs CPU</h3>
+        <h3 className="text-base md:text-lg font-semibold mb-2 break-words">Consumo de Recursos: Memoria vs CPU</h3>
         <ResponsiveContainer width="100%" height={300}>
           <LineChart data={chartData}>
             <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
@@ -151,7 +151,7 @@ const AreaBetweenFunctions = () => {
 
       {areaData.length > 0 && (
         <div className="mb-6">
-          <h3 className="text-lg font-semibold mb-2">Desbalance de Recursos (Área entre Curvas)</h3>
+          <h3 className="text-base md:text-lg font-semibold mb-2 break-words">Desbalance de Recursos (Área entre Curvas)</h3>
           <ResponsiveContainer width="100%" height={200}>
             <AreaChart data={areaData}>
               <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
@@ -174,21 +174,21 @@ const AreaBetweenFunctions = () => {
         </div>
       )}
 
-      <div className="bg-gray-700 p-4 rounded">
-        <h3 className="text-lg font-semibold mb-2">Análisis de Recursos del Sistema</h3>
+      <div className="bg-gray-700 p-3 md:p-4 rounded">
+        <h3 className="text-base md:text-lg font-semibold mb-2 break-words">Análisis de Recursos del Sistema</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <p className="text-sm text-gray-300">Función Memoria: M(t) = (t + {mParam})² MB</p>
-            <p className="text-sm text-gray-300">Función CPU: C(t) = -t + {cParam} %</p>
+            <p className="text-xs md:text-sm text-gray-300 break-words">Función Memoria: M(t) = (t + {mParam})² MB</p>
+            <p className="text-xs md:text-sm text-gray-300 break-words">Función CPU: C(t) = -t + {cParam} %</p>
             {calculateIntersectionsAndArea.intersections.length > 0 && (
-              <p className="text-sm text-gray-300">Puntos de equilibrio: {calculateIntersectionsAndArea.intersections.map(x => x.toFixed(2)).join(', ')}s</p>
+              <p className="text-xs md:text-sm text-gray-300 break-words">Puntos de equilibrio: {calculateIntersectionsAndArea.intersections.map(x => x.toFixed(2)).join(', ')}s</p>
             )}
           </div>
           <div>
             {calculateIntersectionsAndArea.intersections.length > 0 && (
               <>
-                <p className="text-sm text-gray-300">Área de desbalance: {calculateIntersectionsAndArea.area.toFixed(2)} unidades</p>
-                <p className="text-cyan-400 font-semibold">El sistema experimentó {calculateIntersectionsAndArea.area.toFixed(2)} unidades de desbalance en {Math.abs(calculateIntersectionsAndArea.b - calculateIntersectionsAndArea.a).toFixed(1)} segundos</p>
+                <p className="text-xs md:text-sm text-gray-300 break-words">Área de desbalance: {calculateIntersectionsAndArea.area.toFixed(2)} unidades</p>
+                <p className="text-xs md:text-sm md:text-base text-cyan-400 font-semibold break-words">El sistema experimentó {calculateIntersectionsAndArea.area.toFixed(2)} unidades de desbalance en {Math.abs(calculateIntersectionsAndArea.b - calculateIntersectionsAndArea.a).toFixed(1)} segundos</p>
               </>
             )}
           </div>

@@ -25,36 +25,36 @@ const EducationalPanel = ({ activeTab }) => {
   const currentContent = content[activeTab];
 
   return (
-    <div className="bg-gray-800 p-6 rounded-lg shadow-lg h-fit">
-      <h2 className="text-2xl font-bold mb-4 text-cyan-400">Información Educativa</h2>
+    <div className="bg-gray-800 p-4 md:p-6 rounded-lg shadow-lg h-fit">
+      <h2 className="text-xl md:text-2xl font-bold mb-4 text-cyan-400 break-words">Información Educativa</h2>
 
       <div className="space-y-4">
         <div>
-          <h3 className="text-lg font-semibold text-purple-400 mb-2">
+          <h3 className="text-base md:text-lg font-semibold text-purple-400 mb-2 break-words">
             {currentContent.title}
           </h3>
-          <p className="text-gray-300 text-sm leading-relaxed">
+          <p className="text-gray-300 text-xs md:text-sm leading-relaxed break-words">
             {currentContent.explanation}
           </p>
         </div>
 
         <div>
-          <h4 className="font-semibold text-cyan-300 mb-1">Fórmula Matemática:</h4>
-          <div className="bg-gray-700 p-3 rounded font-mono text-center text-purple-300">
+          <h4 className="font-semibold text-cyan-300 mb-1 text-xs md:text-sm break-words">Fórmula Matemática:</h4>
+          <div className="bg-gray-700 p-3 rounded font-mono text-center text-purple-300 text-xs md:text-sm break-words">
             {currentContent.formula}
           </div>
         </div>
 
         <div>
-          <h4 className="font-semibold text-cyan-300 mb-1">Aplicaciones en Ingeniería:</h4>
-          <p className="text-gray-300 text-sm leading-relaxed">
+          <h4 className="font-semibold text-cyan-300 mb-1 text-xs md:text-sm break-words">Aplicaciones en Ingeniería:</h4>
+          <p className="text-gray-300 text-xs md:text-sm leading-relaxed break-words">
             {currentContent.applications}
           </p>
         </div>
 
         <div className="border-t border-gray-600 pt-4">
-          <h4 className="font-semibold text-cyan-300 mb-2">Consejos de Uso:</h4>
-          <ul className="text-gray-300 text-sm space-y-1">
+          <h4 className="font-semibold text-cyan-300 mb-2 text-xs md:text-sm break-words">Consejos de Uso:</h4>
+          <ul className="text-gray-300 text-xs md:text-sm space-y-1 break-words">
             <li>• Ajusta los parámetros para ver cambios en tiempo real</li>
             <li>• Observa cómo diferentes métodos afectan la precisión</li>
             <li>• Compara resultados teóricos con aproximaciones numéricas</li>
