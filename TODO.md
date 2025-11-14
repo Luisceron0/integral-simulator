@@ -1,7 +1,6 @@
-# TODO: Fix Mobile Text Responsiveness Across Entire Application
+# TODO: Crear pestaña de integrales definidas
 
-- [x] RealTimeMonitoring.jsx - Adjust header, subheader, paragraph, and metrics text sizes and wrapping
-- [x] App.jsx - Adjust main title, description text, and grid layout for mobile
-- [x] RiemannSum.jsx - Adjust headers, descriptions, labels, and analysis text for mobile
-- [x] AreaBetweenFunctions.jsx - Adjust headers, descriptions, labels, and analysis text for mobile
-- [x] EducationalPanel.jsx - Adjust headers, content text, and formula display for mobile
+- [x] Crear componente DefiniteIntegrals.jsx con inputs para f(x), a, b, n; cálculo numérico de integral definida; display de resultado y gráfica.
+- [x] Actualizar App.jsx: importar DefiniteIntegrals, agregar TabsTrigger y TabsContent, cambiar grid-cols-4.
+- [x] Actualizar EducationalPanel.jsx: agregar contenido educativo para la nueva pestaña.
+- [x] Probar la implementación: verificar que la pestaña funcione, inputs respondan, gráfica se renderice.

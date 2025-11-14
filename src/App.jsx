@@ -3,6 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from './components/ui/Tabs';
 import RiemannSum from './components/RiemannSum';
 import AreaBetweenFunctions from './components/AreaBetweenFunctions';
 import RealTimeMonitoring from './components/RealTimeMonitoring';
+import DefiniteIntegrals from './components/DefiniteIntegrals';
 import EducationalPanel from './components/EducationalPanel';
 
 function App() {
@@ -38,7 +39,7 @@ function App() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2">
             <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-              <TabsList className="grid w-full grid-cols-3 bg-gray-800">
+              <TabsList className="grid w-full grid-cols-4 bg-gray-800">
                 <TabsTrigger value="riemann" className="data-[state=active]:bg-cyan-600">
                   Suma de Riemann
                 </TabsTrigger>
@@ -47,6 +48,9 @@ function App() {
                 </TabsTrigger>
                 <TabsTrigger value="realtime" className="data-[state=active]:bg-cyan-600">
                   Monitoreo en Tiempo Real
+                </TabsTrigger>
+                <TabsTrigger value="integrals" className="data-[state=active]:bg-cyan-600">
+                  Integrales Definidas
                 </TabsTrigger>
               </TabsList>
 
@@ -60,6 +64,10 @@ function App() {
 
               <TabsContent value="realtime" className="mt-6">
                 <RealTimeMonitoring />
+              </TabsContent>
+
+              <TabsContent value="integrals" className="mt-6">
+                <DefiniteIntegrals />
               </TabsContent>
             </Tabs>
           </div>

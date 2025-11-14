@@ -19,6 +19,23 @@ const EducationalPanel = ({ activeTab }) => {
       explanation: "La integración en tiempo real acumula el trabajo total realizado por el sistema. Muestra cómo el consumo de recursos se integra a lo largo del tiempo, permitiendo observar tendencias y detectar anomalías en el rendimiento del sistema.",
       formula: "Trabajo(t) = ∫₀ᵗ [CPU(τ) + Memoria(τ)] dτ",
       applications: "Monitoreo de sistemas en producción, análisis de rendimiento en tiempo real, detección de anomalías en el consumo de recursos y optimización de la eficiencia energética de servidores."
+    },
+    integrals: {
+      title: "Ejemplo: Superficie de revolución (y = √x, a=0, b=6)",
+      explanation: `Se calcula el área del sólido generado al girar la región delimitada por y = √x, x = 6 y el eje x alrededor del eje x. El proceso se descompone en: definición de la región, cálculo del área lateral mediante la fórmula de superficie de revolución, cálculo del área de la tapa (si aplica) y suma para obtener el área total. A continuación se muestra el desarrollo analítico resumido.`,
+      formula: `Fórmulas clave:\n
+  - Área lateral de revolución alrededor del eje x: A_lateral = 2π ∫_a^b y \sqrt{1 + (dy/dx)^2} dx\n
+  - Para y = √x ⇒ dy/dx = 1/(2√x). Sustituyendo y simplificando se obtiene A_lateral = π ∫_0^6 √{4x + 1} dx\n
+  - Área de la tapa en x = 6 (círculo de radio √6): A_tapa = π(√6)^2 = 6π\n
+  - Área total: A_total = A_lateral + A_tapa = \frac{62π}{3} + 6π = \frac{80π}{3}`,
+      applications: `Desarrollo matemático (resumen):\n
+  1) y = √x, dy/dx = 1/(2√x)\n
+  2) A_lateral = 2π ∫_0^6 √x \sqrt{1 + (1/(2√x))^2} dx = π ∫_0^6 √{4x + 1} dx\n
+  3) Haciendo u = 4x + 1 ⇒ du = 4 dx, límites: x=0 → u=1, x=6 → u=25.\n
+     I = ∫_0^6 √{4x+1} dx = (1/4) ∫_1^{25} u^{1/2} du = (1/6)(25^{3/2} - 1^{3/2}) = 62/3\n
+     Por tanto A_lateral = π * 62/3 = 62π/3\n
+  4) A_tapa = 6π.\n
+  5) A_total = 62π/3 + 6π = 80π/3 ≈ 83.7758 unidades^2.`
     }
   };
 
