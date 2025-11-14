@@ -7,7 +7,21 @@
     <title>Simulador de Consumo de Recursos - Cálculo Integral</title>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">Cargando la aplicación... Si esto persiste, verifica la consola del navegador.</div>
+    <script>
+      // Inline debug: marca visible si el navegador permite ejecutar JavaScript
+      try {
+        const el = document.getElementById('root');
+        if (el) {
+          const mark = document.createElement('div');
+          mark.style.cssText = 'position:fixed;right:8px;top:8px;background:#06b6d4;color:#000;padding:6px 8px;border-radius:4px;z-index:9999;font-size:12px';
+          mark.textContent = 'JS INLINE OK';
+          document.body.appendChild(mark);
+        }
+      } catch (e) {
+        // ignore
+      }
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

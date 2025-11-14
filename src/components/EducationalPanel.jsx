@@ -37,9 +37,22 @@ const EducationalPanel = ({ activeTab }) => {
   4) A_tapa = 6π.\n
   5) A_total = 62π/3 + 6π = 80π/3 ≈ 83.7758 unidades^2.`
     }
+    ,
+    server: {
+      title: "Tráfico de Servidor y Cálculo Integral",
+      explanation: "Ejemplo práctico: una campaña de marketing de 12 horas modela el tráfico con T(t) = 100 + 50·sin(πt/6) + 20t. El total de peticiones se obtiene integrando T(t) en [0,12], lo que nos da información precisa para dimensionamiento y costos.",
+      formula: "Peticiones totales = ∫_0^{12} [100 + 50·sin(πt/6) + 20t] dt = 1,200 + 0 + 1,440 = 2,640",
+      applications: "Usos: dimensionamiento de instancias, estimación de ancho de banda (~2.64 GB asumiendo 1MB/petición), optimización de políticas de auto-scaling y estimación de costos en la nube."
+    }
   };
 
-  const currentContent = content[activeTab];
+  // Proteger accesos si `activeTab` no existe en `content`
+  const currentContent = content[activeTab] || {
+    title: 'Contenido no disponible',
+    explanation: 'No hay información educativa para esta pestaña.',
+    formula: '-',
+    applications: '-'
+  };
 
   return (
     <div className="bg-gray-800 p-4 md:p-6 rounded-lg shadow-lg h-fit">

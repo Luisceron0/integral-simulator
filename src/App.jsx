@@ -4,13 +4,17 @@ import RiemannSum from './components/RiemannSum';
 import AreaBetweenFunctions from './components/AreaBetweenFunctions';
 import RealTimeMonitoring from './components/RealTimeMonitoring';
 import DefiniteIntegrals from './components/DefiniteIntegrals';
+import ServerTraffic from './components/ServerTraffic';
 import EducationalPanel from './components/EducationalPanel';
 
-function App() {
+function AppInner() {
+  console.log('App.jsx: render start');
   const [activeTab, setActiveTab] = useState('riemann');
 
   return (
     <div className="min-h-screen bg-gray-900 text-white p-3 md:p-4">
+      {/* Depuración visual mínima — aparece incluso si Tailwind no se cargó */}
+      <div style={{position: 'fixed', left: 8, top: 8, background: 'lime', color: '#000', padding: '4px 8px', borderRadius: 4, zIndex: 9999, fontSize: 12}}>APP MOUNTED</div>
       <div className="max-w-7xl mx-auto">
         <h1 className="text-2xl md:text-4xl font-bold text-center mb-6 md:mb-8 text-cyan-400 break-words">
           Simulador de Recursos Computacionales - Cálculo Integral
@@ -39,7 +43,7 @@ function App() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2">
             <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-              <TabsList className="grid w-full grid-cols-4 bg-gray-800">
+              <TabsList className="grid w-full grid-cols-5 bg-gray-800">
                 <TabsTrigger value="riemann" className="data-[state=active]:bg-cyan-600">
                   Suma de Riemann
                 </TabsTrigger>
@@ -51,6 +55,9 @@ function App() {
                 </TabsTrigger>
                 <TabsTrigger value="integrals" className="data-[state=active]:bg-cyan-600">
                   Integrales Definidas
+                </TabsTrigger>
+                <TabsTrigger value="server" className="data-[state=active]:bg-cyan-600">
+                  Tráfico Servidor
                 </TabsTrigger>
               </TabsList>
 
@@ -69,6 +76,10 @@ function App() {
               <TabsContent value="integrals" className="mt-6">
                 <DefiniteIntegrals />
               </TabsContent>
+
+              <TabsContent value="server" className="mt-6">
+                <ServerTraffic />
+              </TabsContent>
             </Tabs>
           </div>
 
@@ -81,4 +92,38 @@ function App() {
   );
 }
 
-export default App;
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false, error: null };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true, error };
+  }
+
+  componentDidCatch(error, info) {
+    console.error('ErrorBoundary caught:', error, info);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div style={{ padding: 20, color: '#000' }}>
+          <h2 style={{ color: 'red' }}>Error en la aplicación</h2>
+          <pre style={{ whiteSpace: 'pre-wrap' }}>{String(this.state.error)}</pre>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
+
+export default function App() {
+  return (
+    <ErrorBoundary>
+      <AppInner />
+    </ErrorBoundary>
+  );
+}
+
